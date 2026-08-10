@@ -1,33 +1,29 @@
 # CLI Capability Map
 
-This page is the compact capability map for the `ChatCDN` CLI. Use it to review which commands are first-class entries and which are still boundary or planned slots. After scaffolding, update it with the real command tree; do not present unimplemented commands as available operations.
+This page is the compact capability map for the `ChatCDN` CLI. Keep the documented command tree aligned with the runtime `chatcdn --tree` output; do not present unimplemented commands as available operations.
 
 Importable Python functions are mapped in [Interface Tree](interface-tree.md). Current package boundaries are tracked in [Capability Map](capability-map.md).
 
 ## Top-Level Commands
 
 ```text
-chatcdn                  # ChatCDN command-line entry
-├── --help                     # Show CLI help and registered commands
-└── --version                  # Print the current package version
+chatcdn  # ChatCDN command-line interface.
+├── --help  # Show this help message.
+├── --version  # Show the installed package version.
+└── --tree  # Print the registered command tree.
 ```
 
 ## Base Entries
 
 ```text
-chatcdn --help           # Verify the command is installed and inspect the current command tree
+chatcdn --help           # Verify the command is installed and inspect help
 chatcdn --version        # Verify the installed version
+chatcdn --tree           # Print the command tree from the real Click registry
 ```
 
-`--help` and `--version` are the scaffolded verification entries. After adding business commands, follow the ChatTea CLI tree pattern: split command groups into their own sections and annotate every command line.
+`ChatCDN` currently has no business subcommands. After adding business commands, follow the ChatTea CLI tree pattern: split command groups into their own sections and annotate every command line.
 
 ## Business Command Slots
-
-```text
-chatcdn <group>          # Command group named after real package capability
-├── <command>                  # Explain what this command does
-└── <command>                  # Explain status, boundary, or checkpoint behavior
-```
 
 This is a structural placeholder, not a promise of future capability. Only document a command as implemented after the command, Python function, and tests exist.
 
