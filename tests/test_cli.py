@@ -1,3 +1,4 @@
+import click
 from click.testing import CliRunner
 
 from chatcdn import __version__
@@ -16,18 +17,43 @@ def test_help_mentions_tree_option():
 
     assert result.exit_code == 0, result.output
     assert "--tree" in result.output
-    assert "Print the registered command tree" in result.output
+    assert "--tree-brief" in result.output
+    assert "Print the registered CLI tree" in result.output
 
 
 def test_tree_shows_registered_top_level_surface_with_purposes():
     result = CliRunner().invoke(main, ["--tree"])
 
     assert result.exit_code == 0, result.output
-    assert "chatcdn  # ChatCDN command-line interface." in result.output
-    assert "├── --help  # Show this help message." in result.output
-    assert "├── --version  # Show the installed package version." in result.output
-    assert "└── --tree  # Print the registered command tree." in result.output
-    assert "#" in result.output
+    assert result.output.splitlines() == [
+        "chatcdn",
+        "├── --help  # Show this message and exit.",
+        "├── --version  # Show the version and exit.",
+        "├── --tree  # Print the registered CLI tree and exit.",
+        "└── --tree-brief  # Print the registered CLI tree without parameter signatures and exit.",
+    ]
+
+
+def test_tree_defaults_to_signatures_and_brief_omits_them():
+    @click.command("probe")
+    @click.argument("source")
+    @click.option("--target")
+    def probe(source: str, target: str | None) -> None:
+        """Probe a parameterized command."""
+
+    main.add_command(probe)
+    try:
+        detailed = CliRunner().invoke(main, ["--tree"])
+        brief = CliRunner().invoke(main, ["--tree-brief"])
+    finally:
+        main.commands.pop("probe")
+
+    assert detailed.exit_code == 0, detailed.output
+    assert brief.exit_code == 0, brief.output
+    assert "└── probe <SOURCE> [--target TARGET]  # Probe a parameterized command." in detailed.output
+    assert "└── probe  # Probe a parameterized command." in brief.output
+    assert "<SOURCE>" not in brief.output
+    assert "[--target TARGET]" not in brief.output
 
 
 def test_template_hello_command_is_not_registered():

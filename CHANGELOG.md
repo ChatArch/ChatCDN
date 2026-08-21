@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.3 - 2026-08-21
+
+### Changed
+
+- Migrate the top-level Click tree to ChatStyle's shared `add_tree_option()` runtime, with signatures in `--tree` and compact output in `--tree-brief`.
+- Raise the shared runtime bounds to `chatstyle>=0.2.0,<0.3.0` and `chatenv>=0.2.10,<0.3.0`.
+- Extend CLI tests, documentation, and installed smoke checks to cover both tree modes and the public `chatcdn` root.
+
 ## 0.1.2 - 2026-08-12
 
 ### Changed
