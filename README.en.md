@@ -37,14 +37,16 @@ pip install -e ".[dev]"
 chatcdn --help
 chatcdn --version
 chatcdn --tree
+chatcdn --tree-brief
 python -m pytest -q
 python -m build
 ```
 
 ## CLI Contract
 
-This template depends on `chatstyle>=0.1.1,<0.2.0` and `chatenv>=0.2.3,<0.3.0`. New commands should prefer:
+This template depends on `chatstyle>=0.2.0,<0.3.0` and `chatenv>=0.2.10,<0.3.0`. New commands should prefer:
 
+- `add_tree_option()` for the shared Click command tree; `--tree` includes parameter signatures by default, while `--tree-brief` keeps command nodes and descriptions without signatures.
 - `CommandSchema` / `CommandField` for inputs.
 - `add_interactive_option()` for the shared `-i/-I` switch.
 - `resolve_command_inputs()` for missing args, defaults, TTY behavior, and validation.

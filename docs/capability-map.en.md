@@ -8,7 +8,7 @@ Use this page to check which first-class capabilities `ChatCDN` currently owns, 
 
 - **CLI Entry**
 
-    `chatcdn --help`, `chatcdn --version`, and `chatcdn --tree` are the default verification entry points.
+    `chatcdn --help`, `chatcdn --version`, `chatcdn --tree`, and `chatcdn --tree-brief` are the default verification entry points.
 
 - **Python API**
 
@@ -24,7 +24,7 @@ Use this page to check which first-class capabilities `ChatCDN` currently owns, 
 
 | Capability | Status | Notes |
 | --- | --- | --- |
-| CLI base entry | Implemented | The Click group exposes `--help`, `--version`, `--tree`, and base tests. |
+| CLI base entry | Implemented | The Click group uses ChatStyle's shared tree runtime to expose `--help`, `--version`, `--tree`, `--tree-brief`, and base tests. |
 | ChatEnv provider | Implemented | The template generates `config.py` and a `chatenv.configs` entry point. |
 | Business commands | Not implemented | Add these from the real package domain; do not fake future commands in the template. |
 

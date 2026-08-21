@@ -12,7 +12,7 @@ from chatcdn import __version__
 
 ```text
 chatcdn
-├── cli.py          # Click 入口和真实注册树渲染，只做参数解析和输出
+├── cli.py          # Click 入口和 ChatStyle 共享注册树接线，只做参数解析和输出
 └── <service>.py    # 放包的核心可调用能力
 ```
 

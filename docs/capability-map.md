@@ -8,7 +8,7 @@
 
 - **命令行入口**
 
-    `chatcdn --help`、`chatcdn --version` 和 `chatcdn --tree` 是默认可验证入口。
+    `chatcdn --help`、`chatcdn --version`、`chatcdn --tree` 和 `chatcdn --tree-brief` 是默认可验证入口。
 
 - **Python 接口**
 
@@ -24,7 +24,7 @@
 
 | 能力 | 状态 | 说明 |
 | --- | --- | --- |
-| 命令行基础入口 | 已实现 | Click group 提供 `--help`、`--version`、`--tree` 和基础测试。 |
+| 命令行基础入口 | 已实现 | Click group 通过 ChatStyle 共享树运行时提供 `--help`、`--version`、`--tree`、`--tree-brief` 和基础测试。 |
 | ChatEnv 配置提供者 | 已实现 | 默认生成 `config.py` 和 `chatenv.configs` 入口点。 |
 | 业务命令 | 未实现 | 按当前包真实需求补充，不能在模板里伪造未来命令。 |
 
